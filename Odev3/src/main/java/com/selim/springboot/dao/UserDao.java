@@ -10,12 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDao extends JpaRepository<User,Long> {
 
- //   @Query("select ku from Kullanıcı ku where ku.kullaniciAdi=:kullaniciAdi")
-   // public Kullanıcı getKullaniciByKullaniciAdi(String kullaniciAdi);
+
     public User getByKullaniciAdi(String kullaniciAdi);
 
-   // @Query(value = "select ku from Kullanıcı ku where ku.telefon=:kullaniciTel ")
-   // public Kullanıcı getKullaniciByKullaniciTel(String kullaniciTel);
     public User getByTelefon(String kullaniciTel);
 
     @Modifying(clearAutomatically = true)
