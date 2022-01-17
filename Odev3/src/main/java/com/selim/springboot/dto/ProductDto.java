@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonFilter("UrunDtoFilter")
-public class UrunDto {
+public class ProductDto {
 
     private Long id;
     private String adi;

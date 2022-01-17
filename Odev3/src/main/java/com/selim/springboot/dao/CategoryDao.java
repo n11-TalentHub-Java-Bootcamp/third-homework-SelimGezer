@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface KategoriDao extends JpaRepository<Kategori, Long> {
+public interface CategoryDao extends JpaRepository<Kategori, Long> {
 
     List<Kategori> findAllByUstKategoriIsNullOrderByAdiDesc();
 

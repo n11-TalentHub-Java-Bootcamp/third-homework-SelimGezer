@@ -22,37 +22,37 @@ public class UsersController {
         return userEntityService.findAll();
     }
 
-    @GetMapping(value = "/getByUsername")
-    public User getByKullaniciAdi(
-            @RequestParam(value ="kullaniciAdi") String kullaniciAdi){
-        return userEntityService.getByKullaniciAdi(kullaniciAdi);
+    @GetMapping(value = "/names",params = {"username"})
+    public User getByUsername(
+            @RequestParam(value ="username") String username){
+        return userEntityService.getByKullaniciAdi(username);
     }
 
-    @GetMapping(value = "/getByPhone",params = {"tel"})
-    public User getByTelefon(@RequestParam(value = "tel") String kullaniciTel){
-        return userEntityService.getByTelefon(kullaniciTel);
+    @GetMapping(value = "/phones",params = {"phoneNumber"})
+    public User getByPhoneNumber(@RequestParam(value = "phoneNumber") String phoneNumber){
+        return userEntityService.getByTelefon(phoneNumber);
     }
 
-    @PostMapping("/insertUser")
-    public void insertUser(@RequestBody UserDto userDto){
+    @PostMapping("")
+    public void addUser(@RequestBody UserDto userDto){
         userEntityService.insertUser(userDto);
     }
 
-    @DeleteMapping(value = "/deleteUserById",params = {"kullaniciAdi","telefon"})
-    public ResponseEntity<String> deleteById(@RequestParam(value="kullaniciAdi") String kullaniciAdi, @RequestParam(value = "telefon") String kullaniciTel ){
+    @DeleteMapping(value = "",params = {"username","phoneNumber"})
+    public ResponseEntity<String> deleteById(@RequestParam(value="username") String username, @RequestParam(value = "phoneNumber") String phoneNumber ){
 
-        User kullaniciByUserAdi = userEntityService.getByKullaniciAdi(kullaniciAdi);
+        User kullaniciByUserAdi = userEntityService.getByKullaniciAdi(username);
         String mesaj=null;
         if(kullaniciByUserAdi ==null){
             System.out.println("Belirtilen kullaniciAdi ile ilgili kullanıcı bulunamadı!");
-            mesaj=String.format("%s kullanıcı adına sahip bir kullanıcı bulunamadı!",kullaniciAdi);
+            mesaj=String.format("%s kullanıcı adına sahip bir kullanıcı bulunamadı!",username);
             return new ResponseEntity(mesaj,HttpStatus.OK);
         }else{
-            if(kullaniciByUserAdi.getTelefon().equals(kullaniciTel)){
+            if(kullaniciByUserAdi.getTelefon().equals(phoneNumber)){
                 userEntityService.deleteById(kullaniciByUserAdi.getId());
                 return new ResponseEntity("Kullanıcı başarıyla silindi.",HttpStatus.OK);
             }else{
-                mesaj=String.format("Kullanıcı Adı: %s ile belirtilen %s numaralı telefon numarası eşleşmiyor!",kullaniciAdi,kullaniciTel);
+                mesaj=String.format("Kullanıcı Adı: %s ile belirtilen %s numaralı telefon numarası eşleşmiyor!",username,phoneNumber);
                 return new ResponseEntity(mesaj,HttpStatus.OK);
             }
         }

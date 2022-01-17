@@ -1,11 +1,8 @@
 package com.selim.springboot.mongodb.controller;
 
-import com.selim.springboot.converter.UrunConverter;
-import com.selim.springboot.dto.UrunDto;
 import com.selim.springboot.mongodb.dto.ProductDetailDto;
 import com.selim.springboot.mongodb.entity.Product;
 import com.selim.springboot.mongodb.service.ProductService;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;

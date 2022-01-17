@@ -1,6 +1,6 @@
 package com.selim.springboot.dto;
 
-public class KategoriDto {
+public class CategoryDto {
 
     private Long id;
     private String adi;

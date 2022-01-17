@@ -1,6 +1,6 @@
 package com.selim.springboot.service.entityservice;
 
-import com.selim.springboot.dao.KategoriDao;
+import com.selim.springboot.dao.CategoryDao;
 import com.selim.springboot.entity.Kategori;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,17 +9,17 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class KategoriEntityService {
+public class CategoryEntityService {
 
     @Autowired
-    private KategoriDao kategoriDao;
+    private CategoryDao categoryDao;
 
     public List<Kategori> findAll(){
-        return (List<Kategori>) kategoriDao.findAll();
+        return (List<Kategori>) categoryDao.findAll();
     }
 
     public Kategori findById(Long id){
-        Optional<Kategori> optionalKategori = kategoriDao.findById(id);
+        Optional<Kategori> optionalKategori = categoryDao.findById(id);
 
         Kategori kategori = null;
         if (optionalKategori.isPresent()){
@@ -30,26 +30,26 @@ public class KategoriEntityService {
     }
 
     public Kategori save(Kategori kategori){
-        return kategoriDao.save(kategori);
+        return categoryDao.save(kategori);
     }
 
     public void delete(Kategori kategori){
-        kategoriDao.delete(kategori);
+        categoryDao.delete(kategori);
     }
 
     public void deleteById(Long id){
-        kategoriDao.deleteById(id);
+        categoryDao.deleteById(id);
     }
 
     public long count(){
-        return kategoriDao.count();
+        return categoryDao.count();
     }
 
     public List<Kategori> findAllByUstKategoriIsNull(){
-        return kategoriDao.findAllByUstKategoriIsNullOrderByAdiDesc();
+        return categoryDao.findAllByUstKategoriIsNullOrderByAdiDesc();
     }
 
     public List<Kategori> findAllByAdiEndsWith(String adi){
-        return kategoriDao.findAllByAdiEndsWith(adi);
+        return categoryDao.findAllByAdiEndsWith(adi);
     }
 }

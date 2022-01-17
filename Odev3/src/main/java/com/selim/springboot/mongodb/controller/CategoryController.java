@@ -1,7 +1,5 @@
 package com.selim.springboot.mongodb.controller;
 
-import com.selim.springboot.dto.KategoriDto;
-import com.selim.springboot.entity.Kategori;
 import com.selim.springboot.mongodb.entity.Category;
 import com.selim.springboot.mongodb.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

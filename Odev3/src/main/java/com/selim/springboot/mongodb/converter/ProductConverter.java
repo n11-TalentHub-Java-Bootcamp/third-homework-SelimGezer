@@ -1,8 +1,5 @@
 package com.selim.springboot.mongodb.converter;
 
-import com.selim.springboot.converter.UrunConverter;
-import com.selim.springboot.dto.UrunDto;
-import com.selim.springboot.entity.Urun;
 import com.selim.springboot.mongodb.dto.ProductDetailDto;
 import com.selim.springboot.mongodb.entity.Product;
 import org.mapstruct.*;

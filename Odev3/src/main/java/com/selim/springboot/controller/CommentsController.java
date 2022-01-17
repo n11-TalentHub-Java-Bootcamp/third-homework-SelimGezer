@@ -19,28 +19,28 @@ public class CommentsController {
     private ProductCommentEntityService productCommentEntityService;
 
 
-    @GetMapping("/getByUserId")
-    private Result getByUser_Id(@RequestParam long userId){
+    @GetMapping("/users")
+    private Result getByUserId(@RequestParam long userId){
         return this.productCommentEntityService.getByUser_Id(userId);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("")
     private List<CommentExtraDto> getAll(){
         return this.productCommentEntityService.getAll();
     }
 
-    @GetMapping("/getByProductId")
-    private Result getByUrun_Id(@RequestParam long productId){
+    @GetMapping("/products")
+    private Result getByProductId(@RequestParam long productId){
         return this.productCommentEntityService.getByUrun_Id(productId);
     }
 
-    @DeleteMapping("/deleteCommentById")
-    private Result deleteByComment_Id(@RequestParam long commentId){
+    @DeleteMapping("/{id}")
+    private Result deleteByCommentId(@RequestParam("id") long commentId){
         return  this.productCommentEntityService.deleteByComment_Id(commentId);
     }
 
-    @PostMapping("/insertComment")
-    private Result insertComment(@RequestBody CommentInsertDto commentInsertDto){
+    @PostMapping("")
+    private Result addComment(@RequestBody CommentInsertDto commentInsertDto){
         return this.productCommentEntityService.insertComment(commentInsertDto);
     }
 

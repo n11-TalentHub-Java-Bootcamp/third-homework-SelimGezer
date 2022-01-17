@@ -1,7 +1,7 @@
 package com.selim.springboot.converter;
 
-import com.selim.springboot.dto.UrunDetayDto;
-import com.selim.springboot.dto.UrunDto;
+import com.selim.springboot.dto.ProductDetailDto;
+import com.selim.springboot.dto.ProductDto;
 import com.selim.springboot.entity.Urun;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -16,18 +16,18 @@ public interface UrunConverter {
     UrunConverter INSTANCE = Mappers.getMapper(UrunConverter.class);
 
     @Mapping(source = "kategoriId", target = "kategori.id")
-    Urun convertUrunDtoToUrun(UrunDto urunDto);
+    Urun convertUrunDtoToUrun(ProductDto productDto);
 
     @Mapping(target = "kategoriId", source = "kategori.id")
-    UrunDto convertUrunToUrunDto(Urun urun);
+    ProductDto convertUrunToUrunDto(Urun urun);
 
     @Mapping(source = "fiyat", target = "urunFiyati")
     @Mapping(source = "adi", target = "urunAdi")
     @Mapping(source = "kategori.adi", target = "kategoriAdi")
-    UrunDetayDto convertUrunToUrunDetayDto(Urun urun);
+    ProductDetailDto convertUrunToUrunDetayDto(Urun urun);
 
     @Mapping(source = "fiyat", target = "urunFiyati")
     @Mapping(source = "adi", target = "urunAdi")
     @Mapping(source = "kategori.adi", target = "kategoriAdi")
-    List<UrunDetayDto> convertAllUrunListToUrunDetayDtoList(List<Urun> urunList);
+    List<ProductDetailDto> convertAllUrunListToUrunDetayDtoList(List<Urun> urunList);
 }

@@ -1,6 +1,6 @@
 package com.selim.springboot.converter;
 
-import com.selim.springboot.dto.KategoriDto;
+import com.selim.springboot.dto.CategoryDto;
 import com.selim.springboot.entity.Kategori;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
@@ -13,15 +13,15 @@ public interface KategoriConverter {
     KategoriConverter INSTANCE = Mappers.getMapper(KategoriConverter.class);
 
     @Mapping(target = "ustKategoriId", source = "ustKategori.id")
-    KategoriDto convertKategoriToKategoriDto(Kategori kategori);
+    CategoryDto convertKategoriToKategoriDto(Kategori kategori);
 
     @Mapping(target = "ustKategoriId", source = "ustKategori.id")
-    List<KategoriDto> convertAllKategoriListToKategoriDtoList(List<Kategori> kategoriList);
+    List<CategoryDto> convertAllKategoriListToKategoriDtoList(List<Kategori> kategoriList);
 
 //    @Mapping(target = "ustKategori.id", source = "ustKategoriId", expression = "java(null))
 //    @Mapping(target = "ustKategori.id", source = "ustKategoriId", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.SET_TO_NULL)
 
 //    @Mapping(target = "ustKategori.id", expression = "java(kategoriDto.getUstKategoriId() == null ? null : " +
 //            "kategoriDto.getUstKategoriId())")
-    Kategori convertKategoriDtoToKategori(KategoriDto kategoriDto);
+    Kategori convertKategoriDtoToKategori(CategoryDto categoryDto);
 }

@@ -2,8 +2,8 @@ package com.selim.springboot;
 
 import com.selim.springboot.entity.Kategori;
 import com.selim.springboot.entity.Urun;
-import com.selim.springboot.service.entityservice.KategoriEntityService;
-import com.selim.springboot.service.entityservice.UrunEntityService;
+import com.selim.springboot.service.entityservice.CategoryEntityService;
+import com.selim.springboot.service.entityservice.ProductEntityService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -19,8 +19,8 @@ public class SpringBootTrainingApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext applicationContext = SpringApplication.run(SpringBootTrainingApplication.class, args);
 
-		KategoriEntityService kategoriEntityService = applicationContext.getBean(KategoriEntityService.class);
-		UrunEntityService urunEntityService = applicationContext.getBean(UrunEntityService.class);
+		CategoryEntityService categoryEntityService = applicationContext.getBean(CategoryEntityService.class);
+		ProductEntityService productEntityService = applicationContext.getBean(ProductEntityService.class);
 
 //		Kategori kategori = getTelefonKategori(service);
 
@@ -35,47 +35,47 @@ public class SpringBootTrainingApplication {
 //		findAllUrunList(kategoriEntityService);
 	}
 
-	private static void saveKitap(KategoriEntityService kategoriEntityService) {
+	private static void saveKitap(CategoryEntityService categoryEntityService) {
 		Kategori kitap = new Kategori();
 		kitap.setAdi("Kitap");
 		kitap.setKirilim(1L);
 
-		kitap = kategoriEntityService.save(kitap);
+		kitap = categoryEntityService.save(kitap);
 
 		Kategori kitapAlt = new Kategori();
 		kitapAlt.setKirilim(2L);
 		kitapAlt.setAdi("Kitap");
 		kitapAlt.setUstKategori(kitap);
 
-		kategoriEntityService.save(kitapAlt);
+		categoryEntityService.save(kitapAlt);
 	}
 
-	private static void findAllUrunList(UrunEntityService urunEntityService) {
-		List<Urun> urunList = urunEntityService.findAll();
+	private static void findAllUrunList(ProductEntityService productEntityService) {
+		List<Urun> urunList = productEntityService.findAll();
 
 		for (Urun urun : urunList) {
 			System.out.println(urun.getAdi());
 		}
 	}
 
-	private static void findAllUrunList(KategoriEntityService kategoriEntityService) {
-		List<Kategori> kategoriList = kategoriEntityService.findAll();
+	private static void findAllUrunList(CategoryEntityService categoryEntityService) {
+		List<Kategori> kategoriList = categoryEntityService.findAll();
 
 		for (Kategori kategori : kategoriList) {
 			System.out.println(kategori.getAdi());
 		}
 	}
 
-	private static void deleteUrunList(UrunEntityService urunEntityService) {
+	private static void deleteUrunList(ProductEntityService productEntityService) {
 		List<Long> silinecekUrunIdlist = Arrays.asList(102L, 152L, 202L, 252L, 302L);
 
 		for (Long urunId : silinecekUrunIdlist) {
-			urunEntityService.deleteById(urunId);
+			productEntityService.deleteById(urunId);
 		}
 	}
 
-	private static void getSamsungM31(KategoriEntityService kategoriEntityService, UrunEntityService urunEntityService) {
-		Kategori kategori = kategoriEntityService.findById(502L);
+	private static void getSamsungM31(CategoryEntityService categoryEntityService, ProductEntityService productEntityService) {
+		Kategori kategori = categoryEntityService.findById(502L);
 
 		Urun urun = new Urun();
 		urun.setAdi("Samsung M31");
@@ -83,12 +83,12 @@ public class SpringBootTrainingApplication {
 		urun.setKayitTarihi(new Date());
 		urun.setKategori(kategori);
 
-		urun = urunEntityService.save(urun);
+		urun = productEntityService.save(urun);
 
 		System.out.println(urun);
 	}
 
-	private static Kategori getTelefonKategori(KategoriEntityService service) {
+	private static Kategori getTelefonKategori(CategoryEntityService service) {
 		Kategori ustKategori = service.findById(2L);
 
 		System.out.println(ustKategori);

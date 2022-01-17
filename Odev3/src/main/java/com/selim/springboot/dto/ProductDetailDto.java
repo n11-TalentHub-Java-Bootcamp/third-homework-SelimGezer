@@ -2,16 +2,16 @@ package com.selim.springboot.dto;
 
 import java.math.BigDecimal;
 
-public class UrunDetayDto {
+public class ProductDetailDto {
 
     private String urunAdi;
     private String kategoriAdi;
     private BigDecimal urunFiyati;
 
-    public UrunDetayDto() {
+    public ProductDetailDto() {
     }
 
-    public UrunDetayDto(String urunAdi, String kategoriAdi, BigDecimal urunFiyati) {
+    public ProductDetailDto(String urunAdi, String kategoriAdi, BigDecimal urunFiyati) {
         this.urunAdi = urunAdi;
         this.kategoriAdi = kategoriAdi;
         this.urunFiyati = urunFiyati;
